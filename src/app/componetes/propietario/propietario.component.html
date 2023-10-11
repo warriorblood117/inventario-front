@@ -1,0 +1,22 @@
+<button class="btn btn-primary">
+    <a routerLink="/crear-usuario" routerLinkActive=true style="color: white; text-decoration: none;">Crear</a>
+</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Identificación</th>
+            <th>Fecha de nacimiento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let propietario of propietarios">
+            <td>{{ propietario.nombre }}</td>
+            <td>{{ propietario.apellido }}</td>
+            <td>{{ propietario.identificacion }}</td>
+            <td>{{ propietario.fechaNacimiento  | date: "dd-MM-yyyy"}}  </td>
+        </tr>
+    </tbody>
+</table>
