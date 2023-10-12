@@ -4,7 +4,7 @@ export interface Propietario {
   apellido?: string;
   identificacion?: number;
   fechaNachimiento?: string;
-  vehiculo: Vehiculo[];
+  vehiculo?: Vehiculo[];
 }
 
 export interface Vehiculo {
