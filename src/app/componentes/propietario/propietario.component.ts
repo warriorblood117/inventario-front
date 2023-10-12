@@ -12,7 +12,7 @@ export class PropietarioComponent implements OnInit {
 
   propietarios : any = [];
   propietario = {} as Propietario;
-  
+  filtro: string = '';
 
   constructor (private propietarioService:PropietarioService){
 
