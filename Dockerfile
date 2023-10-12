@@ -1,5 +1,5 @@
 # Use an official Node runtime as a parent image
-FROM node:18
+FROM node:18 as build
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -16,8 +16,12 @@ RUN npm install
 # Copy the entire application to the working directory
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 4200
+# Build the Angular app
+RUN ng build --prod
 
-# Serve the app
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+# Use Nginx as a web server
+FROM nginx:1.21
+
+# Copy the built Angular app from the previous stage
+COPY --from=build /usr/src/app/dist/* /usr/share/nginx/html/
+
