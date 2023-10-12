@@ -9,6 +9,7 @@ import { PropietarioService } from 'src/app/servicios/propietario.service';
 export class PropietarioComponent implements OnInit {
 
   propietarios : any = [];
+  propietario : any = {};
 
   constructor (private propietarioService:PropietarioService){
 
@@ -19,9 +20,5 @@ export class PropietarioComponent implements OnInit {
       this.propietarios =  propietarios;
     });
   }
-
-  
-
-
 
 }

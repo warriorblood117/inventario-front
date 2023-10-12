@@ -1,0 +1,189 @@
+<br>
+<div class="container">
+  <form (ngSubmit)="crearPropietario()" method="post">
+    <div class="form-group">
+      <label for="nombre" class="form-label">Nombre:</label>
+      <input class="form-control" type="text" id="nombre" name="nombre" [(ngModel)]="propietario.nombre">
+    </div>
+    <div class="form-group">
+      <label for="apellido" class="form-label">Apellido:</label>
+      <input class="form-control" type="text" id="apellido" name="apellido" [(ngModel)]="propietario.apellido">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="identificacion">identificacion:</label>
+      <input class="form-control" type="number" id="identificacion" name="identificacion"
+        [(ngModel)]="propietario.identificacion">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="fechaNacimiento">fechaDeNacimiento:</label>
+      <input class="form-control" type="text" id="fechaNacimiento" name="fechaNacimiento"
+        [(ngModel)]="propietario.fechaNacimiento">
+    </div>
+
+
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalVehiculo">
+      Agregar Vehículo
+    </button>
+
+    <div class="modal fade" id="modalVehiculo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      *ngIf="!modalEditar" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Vehículo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="agregarVehiculo()">
+
+              <div class="form-group">
+                <label class="form-label" for="placa">Placa:</label>
+                <input class="form-control" type="text" id="placa" name="placa" [(ngModel)]="vehiculo.placa">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">VIN:</label>
+                <input class="form-control" type="text" id="vin" name="vin" [(ngModel)]="vehiculo.vin">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">marca:</label>
+                <input class="form-control" type="text" id="marca" name="marca" [(ngModel)]="vehiculo.marca">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">linea:</label>
+                <input class="form-control" type="text" id="linea" name="linea" [(ngModel)]="vehiculo.linea">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">cilidrada:</label>
+                <input class="form-control" type="text" id="cilidrada" name="cilidrada"
+                  [(ngModel)]="vehiculo.cilidrada">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">color:</label>
+                <input class="form-control" type="text" id="color" name="color" [(ngModel)]="vehiculo.color">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">chasis:</label>
+                <input class="form-control" type="text" id="chasis" name="chasis" [(ngModel)]="vehiculo.chasis">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">tipoDeVehiculo:</label>
+                <input class="form-control" type="text" id="tipoDeVehiculo" name="tipoDeVehiculo"
+                  [(ngModel)]="vehiculo.tipoDeVehiculo">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">modelo:</label>
+                <input class="form-control" type="text" id="modelo" name="modelo" [(ngModel)]="vehiculo.modelo">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Guardar Vehículo</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="editarVehiculo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Vehículo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="editarVehiculom()">
+
+              <div class="form-group">
+                <label class="form-label" for="placa">Placa:</label>
+                <input type="text" id="placa" name="placa" [(ngModel)]="vehiculoEditar.placa">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">VIN:</label>
+                <input type="text" id="vin" name="vin" [(ngModel)]="vehiculoEditar.vin">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">marca:</label>
+                <input type="text" id="marca" name="marca" [(ngModel)]="vehiculoEditar.marca">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">linea:</label>
+                <input type="text" id="linea" name="linea" [(ngModel)]="vehiculoEditar.linea">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">cilidrada:</label>
+                <input type="text" id="cilidrada" name="cilidrada" [(ngModel)]="vehiculoEditar.cilidrada">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">color:</label>
+                <input type="text" id="color" name="color" [(ngModel)]="vehiculoEditar.color">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">chasis:</label>
+                <input type="text" id="chasis" name="chasis" [(ngModel)]="vehiculoEditar.chasis">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">tipoDeVehiculo:</label>
+                <input type="text" id="tipoDeVehiculo" name="tipoDeVehiculo"
+                  [(ngModel)]="vehiculoEditar.tipoDeVehiculo">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vin">modelo:</label>
+                <input type="text" id="modelo" name="modelo" [(ngModel)]="vehiculoEditar.modelo">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Editar Vehículo</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <h3>Vehículos</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Placa</th>
+          <th>VIN</th>
+          <th>Marca</th>
+          <th>Linea</th>
+          <th>Cilidrada</th>
+          <th>Color</th>
+          <th>Chasis</th>
+          <th>Tipo De Vehiculo</th>
+          <th>Modelo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehiculo of vehiculos">
+          <td>{{vehiculo.placa }}</td>
+          <td>{{vehiculo.vin }}</td>
+          <td>{{vehiculo.marca }}</td>
+          <td>{{vehiculo.linea }}</td>
+          <td>{{vehiculo.cilidrada}}</td>
+          <td>{{vehiculo.color}}</td>
+          <td>{{vehiculo.chasis}}</td>
+          <td>{{vehiculo.tipoDeVehiculo}}</td>
+          <td>{{vehiculo.modelo}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarVehiculo"
+              (click)="editarVehiculo(vehiculo)">
+              Editar
+            </button>
+            <button type="button" class="btn btn-danger" (click)="eliminarVehiculo(vehiculo.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <button type="submit" class="btn btn-success">Crear Propietario</button>
+  </form>
+</div>

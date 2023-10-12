@@ -1,0 +1,33 @@
+<br>
+<div class="container">
+<button class="btn btn-primary">
+    <a routerLink="/crear-propietario" routerLinkActive=true style="color: white; text-decoration: none;">Crear</a>
+</button>
+<br>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Identificación</th>
+            <th>Fecha de nacimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let propietario of propietarios">
+            <td>{{ propietario.id}}</td>
+            <td>{{ propietario.nombre }}</td>
+            <td>{{ propietario.apellido }}</td>
+            <td>{{ propietario.identificacion }}</td>
+            <td>{{ propietario.fechaNacimiento }}  </td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['/editar-propietario', propietario.id]" routerLinkActive="active">editar</button> |
+                <button class="btn btn-danger">eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

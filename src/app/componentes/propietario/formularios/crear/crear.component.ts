@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Propietario, Vehiculo } from 'src/app/Interfaces/Propietario';
 import { PropietarioService } from 'src/app/servicios/propietario.service';
 
 @Component({

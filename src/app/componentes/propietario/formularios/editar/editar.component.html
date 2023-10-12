@@ -1,0 +1,29 @@
+<br>
+<div class="container">
+    <form (ngSubmit)="editarPropietario()" method="post">
+        <div class="form-group">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input class="form-control" type="text" id="nombre" name="nombre" [(ngModel)]="propietario.nombre">
+        </div>
+        <div class="form-group">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input class="form-control" type="text" id="apellido" name="apellido" [(ngModel)]="propietario.apellido">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="identificacion">identificacion:</label>
+            <input class="form-control" type="number" id="identificacion" name="identificacion"
+                [(ngModel)]="propietario.identificacion">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="fechaNacimiento">fechaDeNacimiento:</label>
+            <input class="form-control" type="text" id="fechaNacimiento" name="fechaNacimiento"
+                [(ngModel)]="propietario.fechaNacimiento">
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalVehiculo">
+            Agregar Vehículo
+        </button>
+
+        <button type="submit" class="btn btn-success">Editar Propietario</button>
+    </form>
+</div>

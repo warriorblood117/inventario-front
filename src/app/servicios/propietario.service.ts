@@ -19,4 +19,12 @@ export class PropietarioService {
     return this.http.post<any>(`${this.url}/save-propietario`, propietario);
   }
 
+  edit(id:number,propietario:any){
+    return this.http.put<any>(`${this.url}/edit-propietario/${id}`,propietario);
+  }
+
+  findById(id:number){
+    return this.http.get<any>(`${this.url}/propietario/${id}`);
+  }
+
 }
