@@ -27,4 +27,9 @@ export class PropietarioService {
     return this.http.get<any>(`${this.url}/propietario/${id}`);
   }
 
+  delete(id:number){
+    return this.http.delete<any>(`${this.url}/delete-vehiculo/${id}`);
+  }
+
+
 }

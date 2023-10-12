@@ -26,6 +26,7 @@ import { RouterModule} from '@angular/router';
     HttpClientModule,
     FormsModule,
     RouterModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
