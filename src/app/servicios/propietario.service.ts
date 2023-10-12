@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PropietarioService {
 
-  private url: string = "http://34.23.138.216/:8080/inventario-back"
+  private url: string = "http://34.23.138.216:8080/inventario-back"
 
   constructor(private http: HttpClient) { }
 
