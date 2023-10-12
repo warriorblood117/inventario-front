@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Propietario } from 'src/app/Interfaces/Propietario';
+import { Propietario, Vehiculo } from 'src/app/Interfaces/Propietario';
 import { PropietarioService } from 'src/app/servicios/propietario.service';
 
 @Component({
@@ -9,24 +9,28 @@ import { PropietarioService } from 'src/app/servicios/propietario.service';
 })
 export class CrearComponent {
 
-  
+
 
   propietario: any = {};
 
   vehiculo: any = {};
 
-  vehiculos:any = [];
+  vehiculos: any = [];
+
+  vehiculoEditar: any = {}; 
+
+  modalEditar: boolean = false;
 
   constructor(private propietarioService: PropietarioService) { }
 
-  crearPropietario() { 
-    this.propietario.vehiculo =  this.vehiculos;
+  crearPropietario() {
+    this.propietario.vehiculo = this.vehiculos;
     return this.propietarioService.create(this.propietario).subscribe(
       response => {
 
-        console.log("se ha creado", response , this.propietario);
+        console.log("se ha creado", response, this.propietario);
       }, error => {
-        console.log("error" + error,this.propietario);
+        console.log("error" + error, this.propietario);
       }
     );
   }
@@ -36,9 +40,39 @@ export class CrearComponent {
     this.vehiculo = {
       placa: '',
       vin: '',
-      marca: '', 
+      marca: '',
+      linea:'',
+      cilindrada:'',
+      color:'',
+      chasis:'',
+      tipoDeVehiculo:'',
+      modelo:''
     };
   }
+
+
+  eliminarVehiculo(index: number) {
+    
+    const confirmacion = confirm('¿Estás seguro de que deseas eliminar este vehículo?');
+
+    if (confirmacion) {
+    
+      this.vehiculos.splice(index, 1);
+   
+    }
+  }
+
+  editarVehiculo(vehiculo:any){
+   this.vehiculoEditar = vehiculo
+  }
+
+  editarVehiculom(){
+    const index = this.vehiculos.indexOf(this.vehiculoEditar);
+    this.vehiculos[index] = this.vehiculoEditar;
+   
+  }
   
+  
+ 
 
 }

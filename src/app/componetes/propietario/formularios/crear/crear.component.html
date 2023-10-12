@@ -22,7 +22,7 @@
     Agregar Vehículo
   </button>
 
-  <div class="modal fade" id="modalVehiculo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="modalVehiculo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" *ngIf="!modalEditar"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -38,7 +38,7 @@
             <div class="form-group">
               <label for="placa">Placa:</label>
               <input type="text" id="placa" name="placa" [(ngModel)]="vehiculo.placa">
-            </div>
+            </div>            
             <div class="form-group">
               <label for="vin">VIN:</label>
               <input type="text" id="vin" name="vin" [(ngModel)]="vehiculo.vin">
@@ -75,9 +75,68 @@
             <button type="submit" class="btn btn-primary">Guardar Vehículo</button>
           </form>
         </div>
+        
       </div>
     </div>
   </div>
+  <div class="modal fade" id="editarVehiculo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Vehículo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="editarVehiculom()">
+
+            <div class="form-group">
+              <label for="placa">Placa:</label>
+              <input type="text" id="placa" name="placa" [(ngModel)]="vehiculoEditar.placa">
+            </div>            
+            <div class="form-group">
+              <label for="vin">VIN:</label>
+              <input type="text" id="vin" name="vin" [(ngModel)]="vehiculoEditar.vin">
+            </div>
+            <div class="form-group">
+              <label for="vin">marca:</label>
+              <input type="text" id="marca" name="marca" [(ngModel)]="vehiculoEditar.marca">
+            </div>
+            <div class="form-group">
+              <label for="vin">linea:</label>
+              <input type="text" id="linea" name="linea" [(ngModel)]="vehiculoEditar.linea">
+            </div>
+            <div class="form-group">
+              <label for="vin">cilidrada:</label>
+              <input type="text" id="cilidrada" name="cilidrada" [(ngModel)]="vehiculoEditar.cilidrada">
+            </div>
+            <div class="form-group">
+              <label for="vin">color:</label>
+              <input type="text" id="color" name="color" [(ngModel)]="vehiculoEditar.color">
+            </div>
+            <div class="form-group">
+              <label for="vin">chasis:</label>
+              <input type="text" id="chasis" name="chasis" [(ngModel)]="vehiculoEditar.chasis">
+            </div>
+            <div class="form-group">
+              <label for="vin">tipoDeVehiculo:</label>
+              <input type="text" id="tipoDeVehiculo" name="tipoDeVehiculo" [(ngModel)]="vehiculoEditar.tipoDeVehiculo">
+            </div>
+            <div class="form-group">
+              <label for="vin">modelo:</label>
+              <input type="text" id="modelo" name="modelo" [(ngModel)]="vehiculoEditar.modelo">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Editar Vehículo</button>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
 
   <h3>Vehículos</h3>
   <table class="table">
@@ -92,20 +151,26 @@
         <th>Chasis</th>
         <th>Tipo De Vehiculo</th>
         <th>Modelo</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let vehiculo of vehiculos">
-        <td>{{ vehiculo.placa }}</td>
-        <td>{{ vehiculo.vin }}</td>
-        <td>{{ vehiculo.marca }}</td>
-        <td>{{ vehiculo.linea }}</td>
+        <td>{{vehiculo.placa }}</td>
+        <td>{{vehiculo.vin }}</td>
+        <td>{{vehiculo.marca }}</td>
+        <td>{{vehiculo.linea }}</td>
         <td>{{vehiculo.cilidrada}}</td>
         <td>{{vehiculo.color}}</td>
         <td>{{vehiculo.chasis}}</td>
         <td>{{vehiculo.tipoDeVehiculo}}</td>
-        <td>{{vehiculo.color}}</td>
-        <td>{{vehiculo.chasis}}</td>
+        <td>{{vehiculo.modelo}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarVehiculo" (click)="editarVehiculo(vehiculo)">
+            Editar
+          </button>
+          <button type="button" class="btn btn-danger" (click)="eliminarVehiculo(vehiculo.id)">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>
